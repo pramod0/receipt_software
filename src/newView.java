@@ -20,7 +20,10 @@ public class newView extends javax.swing.JFrame {
         initComponents();
         jPanel5.setVisible(false);
         jPanel6.setVisible(false);
+        
+        jPanel3.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -160,6 +163,11 @@ public class newView extends javax.swing.JFrame {
         });
 
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Name");
 
@@ -380,6 +388,11 @@ public class newView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel6.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        jPanel3.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
