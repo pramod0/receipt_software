@@ -29,10 +29,10 @@ public class Db {
         try{
         Class.forName("com.mysql.jdbc.Driver");  
         ResultSet rs;
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw")) {
+         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Classes","root","");
                 Statement stmt=con.createStatement();
                 rs = stmt.executeQuery(query);  
-            }
+            
         return rs;
         }catch (ClassNotFoundException e){
         System.out.println("Mysql class not found : ");         
@@ -45,18 +45,18 @@ public class Db {
     }
     protected void executeUpdate(String query){
     
-        try{
+         try{
         Class.forName("com.mysql.jdbc.Driver");  
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw")) {
-                Statement stmt=con.createStatement();
-                stmt.executeUpdate(query);  
-            }
-        }catch (ClassNotFoundException e){
-        System.out.println("Mysql class not found : ");         
-        } catch (SQLException e){
+   
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Classes","root","");                Statement stmt=con.createStatement();
+            stmt.executeUpdate(query);  
+            
+        
+        }catch (Exception e){
             e.printStackTrace();
-        System.out.print("Wrong SQL query : "+ query);         
+        System.out.print(e);         
         }
     }
     
-}
+
+    }
