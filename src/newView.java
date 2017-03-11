@@ -1,4 +1,8 @@
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /*
@@ -390,19 +394,27 @@ public class newView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         jPanel3.setVisible(true);
+        String id = jTextField5.getText();
+        Db db = Db.getDb();
+        ResultSet rs1 = db.executeQuery("Select firstname from student where id="+id);
+        ResultSet rs2 = db.executeQuery("Select totalfees from fees where id="+id);
+        try {
+            while(rs1.next()){
+                jTextField7.setText(rs1.getString("firstname"));
+            }
+            while(rs2.next()){
+               jTextField8.setText(rs2.getString("totalfees"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

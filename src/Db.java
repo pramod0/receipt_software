@@ -29,10 +29,10 @@ public class Db {
         try{
         Class.forName("com.mysql.jdbc.Driver");  
         ResultSet rs;
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw")) {
-                Statement stmt=con.createStatement();
-                rs = stmt.executeQuery(query);  
-            }
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw");
+        Statement stmt=con.createStatement();
+        rs = stmt.executeQuery(query);  
+      
         return rs;
         }catch (ClassNotFoundException e){
         System.out.println("Mysql class not found : ");         
