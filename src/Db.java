@@ -29,7 +29,7 @@ public class Db {
         try{
         Class.forName("com.mysql.jdbc.Driver");  
         ResultSet rs;
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","root","root123");
         Statement stmt=con.createStatement();
         rs = stmt.executeQuery(query);  
       
@@ -47,7 +47,7 @@ public class Db {
     
         try{
         Class.forName("com.mysql.jdbc.Driver");  
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","cust","custpw")) {
+            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","root","root123")) {
                 Statement stmt=con.createStatement();
                 stmt.executeUpdate(query);  
             }
