@@ -47,7 +47,7 @@ public class Db {
     
         try{
         Class.forName("com.mysql.jdbc.Driver");  
-            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","root","root123")) {
+            try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classes","root","root123")){ 
                 Statement stmt=con.createStatement();
                 stmt.executeUpdate(query);  
             }
