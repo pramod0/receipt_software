@@ -9,6 +9,7 @@
  */
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Db {
     private static Db db; //create static instance of the class
@@ -55,6 +56,8 @@ public class Db {
         System.out.println("Mysql class not found : ");         
         } catch (SQLException e){
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Duplicate Entry of ID Number is Not Allowed");
+           System.exit(0); 
         System.out.print("Wrong SQL query : "+ query);         
         }
     }
