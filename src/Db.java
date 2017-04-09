@@ -36,7 +36,8 @@ public class Db {
       
         return rs;
         }catch (ClassNotFoundException e){
-        System.out.println("Mysql class not found : ");         
+            
+        System.out.println("haresh Mysql class not found : ");         
         } catch (SQLException e){
             e.printStackTrace();
         System.out.print("Wrong SQL query : "+ query);         
@@ -53,7 +54,9 @@ public class Db {
                 stmt.executeUpdate(query);  
             }
         }catch (ClassNotFoundException e){
-        System.out.println("Mysql class not found : ");         
+             JOptionPane.showMessageDialog(null,"NoT Entered");
+           
+        System.out.println("pramd Mysql class not found : ");         
         } catch (SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,"Duplicate Entry of ID Number is Not Allowed");

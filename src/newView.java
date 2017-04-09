@@ -1,4 +1,7 @@
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -7,7 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import java.awt.print.PrinterGraphics;
+import java.awt.print.PrinterJob;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import org.apache.log4j.BasicConfigurator;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,8 +37,11 @@ public class newView extends javax.swing.JFrame {
         initComponents();
         jPanel5.setVisible(false);
         jPanel6.setVisible(false);
-        
         jPanel3.setVisible(false);
+         jPanel8.setVisible(false);
+        Logger logger = Logger.getLogger("newView");
+       // BasicConfigurator.configure();
+        logger.info("This is my first log4j's statement");
         
     }
     
@@ -85,6 +98,8 @@ public class newView extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jToolBar1.setRollover(true);
 
@@ -139,13 +154,13 @@ public class newView extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2))
                             .addComponent(jLabel4))
-                        .addGap(0, 312, Short.MAX_VALUE))
+                        .addGap(0, 444, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4))
                         .addGap(164, 164, 164))))
@@ -245,7 +260,7 @@ public class newView extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +374,7 @@ public class newView extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jButton5)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,6 +399,11 @@ public class newView extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 102, 0));
         jButton6.setText("Generate Receipt");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -392,7 +412,7 @@ public class newView extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addComponent(jButton6)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,15 +466,31 @@ public class newView extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "    ID", "    Date", "     Recept No"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -464,20 +500,17 @@ public class newView extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(114, 114, 114)
-                                .addComponent(jButton7)))
-                        .addGap(0, 121, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,7 +523,7 @@ public class newView extends javax.swing.JFrame {
                 .addComponent(jButton7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Loss Receipt", jPanel7);
@@ -499,9 +532,7 @@ public class newView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,7 +543,7 @@ public class newView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int course=jComboBox2.getSelectedIndex();
         int gid=ID.generateID(course);
@@ -548,7 +579,8 @@ public class newView extends javax.swing.JFrame {
                 jLabel10.setText(rs.getString("firstname"));
                 jLabel14.setText(rs.getString("lastname"));
             }
-        }catch(Exception e){}
+        }catch(Exception e){Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, e);
+       }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -556,14 +588,16 @@ public class newView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel6.setVisible(true);
         Db db=Db.getDb();
-        String rno="ATMIYA1";
+        int rno2=0;
         int fpaid=Integer.parseInt(jTextField9.getText());
         String id=jTextField6.getText();
         ResultSet rs=db.executeQuery("select * from fees where id="+id);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
-        String date=dtf.format(localDate);
-     System.out.print(date);
+        System.out.println(dtf.format(localDate));
+        String date=localDate.toString();
+        String rno1=date.substring(0,4);
+        
         try{
             while(rs.next())
             {
@@ -581,28 +615,35 @@ public class newView extends javax.swing.JFrame {
                     }
                     else
                     {            
-        String iintoi="insert into installments(id,installment,date) values (\""+id+"\", "+fpaid+","+date+");";
-        db.executeUpdate(iintoi);
-        rno=rno+1;
-        String iintor="insert into receipt(id,date,receipt_no) values (\""+id+"\","+date+","+rno+");";
-        db.executeUpdate(iintor);
+        rno2=rno2+1;
+        String rno=rno1+"/"+rno2;
+        String cmd="insert into receipt(id,date,receipt_no) values (\""+id+"\",\""+localDate+"\",\""+rno+"\");";
+        db.executeUpdate(cmd);
+        cmd="insert into installments(id,feespaid,date) values (\""+id+"\", "+fpaid+",\""+localDate+"\");";
+        db.executeUpdate(cmd);
+        
                         db.executeUpdate("update fees set feespaid='"+paidf+"' where id='"+id+"'");
                 
                         int painding=Integer.parseInt(rs.getString("totalfees"))-paidf;
                         db.executeUpdate("update fees set feespending='"+painding+"' where id='"+id+"'");
             
                         JOptionPane.showMessageDialog(null, "Fees Paid");
+                       // PrintRecipt pr=new PrintRecipt(id);
+                        // pr.setVisible(true);
                     }//String painding1= (painding)-(fpaid);
                 }
             }
             
         }
-        catch(Exception e){}
+        catch(Exception e){
+            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, e);
+       }
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jPanel3.setVisible(true);
+        System.out.println("pramod");
         String id = jTextField5.getText();
         Db db = Db.getDb();
         
@@ -636,7 +677,62 @@ public class newView extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        
+        DefaultTableModel model=(DefaultTableModel) jTable1.getModel();
+        int x=0;
+         int rowCount = model.getRowCount();
+        if (model.getRowCount() > 0)
+        {
+            for (int i = model.getRowCount() - 1; i > -1; i--) 
+            {
+                model.removeRow(i);
+            }
+        }
+        jPanel8.setVisible(true);
+           
+        Db db=Db.getDb();
+        
+        ResultSet rs1 = db.executeQuery("Select * from installments where id="+jTextField3.getText());
+        ResultSet rs2 = db.executeQuery("Select * from receipt where id="+jTextField3.getText());
+        
+        try {
+            while(rs2.next())
+            {
+                String date=rs2.getString("date");
+                String rno=rs2.getString("receipt_no");
+                String id=rs2.getString("id");
+                model.addRow(new Object[]{id,date,rno});
+            } 
+            
+        }
+         catch (SQLException ex) {
+            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+         String id=jTextField6.getText();
+         //receipt re=new receipt();
+         //re.rec(id);
+         Boolean com,com1;
+        try 
+        {
+            com = jTextField6.print();
+            com1 = jTextField9.print();
+            //com = jLabel10.print();
+            if(com)
+            {
+                JOptionPane.showMessageDialog(null, "print");
+            }
+             if(com1)
+            {
+                JOptionPane.showMessageDialog(null, "print");
+            }
+        } catch (PrinterException ex) {
+            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -700,7 +796,9 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
