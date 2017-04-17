@@ -39,9 +39,6 @@ public class newView extends javax.swing.JFrame {
         jPanel6.setVisible(false);
         jPanel3.setVisible(false);
          jPanel8.setVisible(false);
-        Logger logger = Logger.getLogger("newView");
-       // BasicConfigurator.configure();
-        logger.info("This is my first log4j's statement");
         
     }
     
@@ -100,6 +97,9 @@ public class newView extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
 
         jToolBar1.setRollover(true);
 
@@ -190,7 +190,7 @@ public class newView extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jButton1)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Student Details", jPanel1);
@@ -279,7 +279,7 @@ public class newView extends javax.swing.JFrame {
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jButton4)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -339,6 +339,12 @@ public class newView extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 51, 0));
         jLabel11.setText("Paying");
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(51, 51, 255));
         jButton5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -459,7 +465,7 @@ public class newView extends javax.swing.JFrame {
 
         jLabel15.setText("  ID No");
 
-        jButton7.setText("Generate");
+        jButton7.setText("Check");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -476,21 +482,46 @@ public class newView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel16.setText("  Receipt No");
+
+        jButton8.setText("Generate");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jButton8)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -523,7 +554,7 @@ public class newView extends javax.swing.JFrame {
                 .addComponent(jButton7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Loss Receipt", jPanel7);
@@ -536,21 +567,35 @@ public class newView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int course=jComboBox2.getSelectedIndex();
-        int gid=ID.generateID(course);
+        Db db = Db.getDb();
+        int c = 0;
+        int index=jComboBox2.getSelectedIndex();
+        //int course=(int) jComboBox2.getSelectedItem();
+        ResultSet rs=db.executeQuery("select count from scount where standard="+index);
+        
+        try {
+            while(rs.next())
+            {
+                c=Integer.parseInt(rs.getString("count"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int gid=ID.generateID(index,c);
         
         //jLabel15.setText("gid");
         String cmd = "insert into student(id,firstname,lastname) values (\""+gid+"\", \""+jTextField1.getText()+"\", \""+jTextField2.getText()+"\");";
-        Db db = Db.getDb();
         if(db == null) System.out.print("i dont know why");
         else
         db.executeUpdate(cmd);
@@ -588,7 +633,7 @@ public class newView extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel6.setVisible(true);
         Db db=Db.getDb();
-        int rno2=0;
+        
         int fpaid=Integer.parseInt(jTextField9.getText());
         String id=jTextField6.getText();
         ResultSet rs=db.executeQuery("select * from fees where id="+id);
@@ -596,8 +641,8 @@ public class newView extends javax.swing.JFrame {
         LocalDate localDate = LocalDate.now();
         System.out.println(dtf.format(localDate));
         String date=localDate.toString();
-        String rno1=date.substring(0,4);
-        
+        int reci=25,c = 0;
+       
         try{
             while(rs.next())
             {
@@ -615,18 +660,24 @@ public class newView extends javax.swing.JFrame {
                     }
                     else
                     {            
-        rno2=rno2+1;
-        String rno=rno1+"/"+rno2;
-        String cmd="insert into receipt(id,date,receipt_no) values (\""+id+"\",\""+localDate+"\",\""+rno+"\");";
-        db.executeUpdate(cmd);
-        cmd="insert into installments(id,feespaid,date) values (\""+id+"\", "+fpaid+",\""+localDate+"\");";
-        db.executeUpdate(cmd);
-        
+                        ResultSet rs1=db.executeQuery("select count from scount where standard="+reci);
+                        try {
+                            while(rs1.next())
+                            {
+                                c=Integer.parseInt(rs1.getString("count"));
+                            }
+            
+                        } catch (SQLException ex) {
+                                Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        String rno=ID.generateRN(reci,c);
+                        String cmd="insert into receipt(id,date,receipt_no) values (\""+id+"\",\""+localDate+"\",\""+rno+"\");";
+                        db.executeUpdate(cmd);
+                        cmd="insert into installments(id,feespaid,date) values (\""+id+"\", "+fpaid+",\""+localDate+"\");";
+                        db.executeUpdate(cmd);
                         db.executeUpdate("update fees set feespaid='"+paidf+"' where id='"+id+"'");
-                
                         int painding=Integer.parseInt(rs.getString("totalfees"))-paidf;
                         db.executeUpdate("update fees set feespending='"+painding+"' where id='"+id+"'");
-            
                         JOptionPane.showMessageDialog(null, "Fees Paid");
                        // PrintRecipt pr=new PrintRecipt(id);
                         // pr.setVisible(true);
@@ -713,26 +764,73 @@ public class newView extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
          String id=jTextField6.getText();
-         //receipt re=new receipt();
-         //re.rec(id);
-         Boolean com,com1;
+         Db db=Db.getDb();
+        System.out.println(id);
+        ResultSet rs1 = db.executeQuery("Select * from student where id="+id);
+        ResultSet rs2 = db.executeQuery("Select * from receipt where id="+id);
+        ResultSet rs3 = db.executeQuery("Select * from student where id="+id);
+        String idn,fname = null,lname = null,rno = null,date = null,fees=null;
+        try {
+            while(rs1.next())
+            {
+                idn=rs1.getString("id");
+                fname=rs1.getString("firstname");
+                lname=rs1.getString("lastname");
+            }
+            while(rs2.next())
+            {
+                rno=rs2.getString("receipt_no");
+                date=rs2.getString("Date");
+            }
+            fees=jTextField9.getText();
+           PrintingForm re=new PrintingForm();
+           re.setVisible(true);
+           re.rec(id,fname,lname,rno,date,fees);
+           re.setVisible(true);
+        }catch(Exception e){}
+        
+         
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+         String rno=jTextField11.getText();
+         String id=jTextField3.getText();
+         
+        Db db=Db.getDb();
+        System.out.println("ID :"+id);       
+        ResultSet rs2 = db.executeQuery("Select * from receipt where receipt_no="+rno);
+        ResultSet rs1 = db.executeQuery("Select * from student where id="+id);
+        ResultSet rs3 = db.executeQuery("Select * from installments where id="+id);
+           
+        String idn=null,fname = null,lname = null,date = null,fees=null;
         try 
         {
-            com = jTextField6.print();
-            com1 = jTextField9.print();
-            //com = jLabel10.print();
-            if(com)
+          while(rs2.next())
             {
-                JOptionPane.showMessageDialog(null, "print");
+                date=rs2.getString("Date");
             }
-             if(com1)
+              
+            while(rs1.next())
             {
-                JOptionPane.showMessageDialog(null, "print");
+                fname=rs1.getString("firstname");
+                lname=rs1.getString("lastname");
             }
-        } catch (PrinterException ex) {
-            Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton6ActionPerformed
+            
+            
+            while(rs3.next())
+            {
+                fees=rs3.getString("feespaid");
+            }
+           PrintingForm re=new PrintingForm();
+           re.setVisible(true);
+           re.rec(id,fname,lname,rno,date,fees);
+           re.setVisible(true);
+        }catch(Exception e){}
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -772,6 +870,7 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -780,6 +879,7 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -801,6 +901,7 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
