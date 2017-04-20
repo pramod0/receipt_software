@@ -17,6 +17,7 @@ import java.awt.print.PrinterJob;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
+import java.sql.Statement;
 import org.apache.log4j.BasicConfigurator;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -88,6 +89,12 @@ public class newView extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -360,45 +367,82 @@ public class newView extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 0, 0));
         jLabel13.setText(" LName");
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel17.setText("  Bank Name");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel18.setText("  Cheque No");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel19.setText("    Branch");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(3, 3, 3)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel9))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton5)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField12)
+                    .addComponent(jTextField13)
+                    .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel18)
+                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addComponent(jButton5))
+                    .addComponent(jLabel19)
+                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jButton5)
+                .addContainerGap())
         );
 
         jButton6.setBackground(new java.awt.Color(153, 255, 153));
@@ -642,7 +686,12 @@ public class newView extends javax.swing.JFrame {
         System.out.println(dtf.format(localDate));
         String date=localDate.toString();
         int reci=25,c = 0;
-       
+        String bname=null,branch=null,cno;
+        
+        bname=jTextField12.getText();
+        branch=jTextField14.getText();
+        cno=jTextField13.getText();
+        
         try{
             while(rs.next())
             {
@@ -671,17 +720,57 @@ public class newView extends javax.swing.JFrame {
                                 Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         String rno=ID.generateRN(reci,c);
-                        String cmd="insert into receipt(id,date,receipt_no) values (\""+id+"\",\""+localDate+"\",\""+rno+"\");";
-                        db.executeUpdate(cmd);
-                        cmd="insert into installments(id,feespaid,date) values (\""+id+"\", "+fpaid+",\""+localDate+"\");";
+                        if(jTextField12.getText().equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null,"Cash Payment");
+                        }
+                        else{
+                            String cmd="insert into cdetail(id,bank,branch,cheque,r_no) values (\""+id+"\", \""+bname+"\",\""+branch+"\",\""+cno+"\",\""+rno+"\");";
+                            db.executeUpdate(cmd);
+                        }
+                            
+                        String cmd="insert into installments(id,feespaid,date,receipt_no) values (\""+id+"\", "+fpaid+",\""+localDate+"\",\""+rno+"\");";
                         db.executeUpdate(cmd);
                         db.executeUpdate("update fees set feespaid='"+paidf+"' where id='"+id+"'");
                         int painding=Integer.parseInt(rs.getString("totalfees"))-paidf;
                         db.executeUpdate("update fees set feespending='"+painding+"' where id='"+id+"'");
                         JOptionPane.showMessageDialog(null, "Fees Paid");
-                       // PrintRecipt pr=new PrintRecipt(id);
-                        // pr.setVisible(true);
-                    }//String painding1= (painding)-(fpaid);
+                       
+       /************* GERERATE RECEIPT**************/
+        
+        ResultSet rs3 = db.executeQuery("Select * from student where id="+id);
+        ResultSet rs2 = db.executeQuery("Select * from installments where receipt_no="+rno);
+        ResultSet rs4 = db.executeQuery("Select * from cdetail where r_no="+rno);
+        
+        
+        String idn1,fname1 = null,lname1 = null,rno1= null,date1= localDate.toString(),fees1=null,b11=null,b21=null,b31=null;
+        try {
+            while(rs3.next())
+            {
+                idn1=rs3.getString("id");
+                fname1=rs3.getString("firstname");
+                lname1=rs3.getString("lastname");
+            }
+            while(rs2.next())
+            {
+                rno1=rs2.getString("receipt_no");
+                date1=rs2.getString("Date");
+            }
+            while(rs4.next())
+            {
+                b11=rs2.getString("bank");
+                b21=rs2.getString("branch");
+                b31=rs2.getString("bank");
+            }
+            int f=Integer.parseInt(jTextField9.getText());
+            fees1=EnglishNumberToWords.convert(f);
+           PrintingForm re=new PrintingForm();
+           re.setVisible(true);
+           re.rec(id,fname1,lname1,rno,date1,fees1,bname,branch,cno);
+           
+        }catch(Exception e){}
+        
+                    }
                 }
             }
             
@@ -744,7 +833,7 @@ public class newView extends javax.swing.JFrame {
         Db db=Db.getDb();
         
         ResultSet rs1 = db.executeQuery("Select * from installments where id="+jTextField3.getText());
-        ResultSet rs2 = db.executeQuery("Select * from receipt where id="+jTextField3.getText());
+        ResultSet rs2 = db.executeQuery("Select id,Date,receipt_no from installments where id="+jTextField3.getText());
         
         try {
             while(rs2.next())
@@ -763,13 +852,15 @@ public class newView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-         String id=jTextField6.getText();
-         Db db=Db.getDb();
+        
+       /* String id=jTextField6.getText();
+        Db db=Db.getDb();
         System.out.println(id);
+       
         ResultSet rs1 = db.executeQuery("Select * from student where id="+id);
-        ResultSet rs2 = db.executeQuery("Select * from receipt where id="+id);
-        ResultSet rs3 = db.executeQuery("Select * from student where id="+id);
-        String idn,fname = null,lname = null,rno = null,date = null,fees=null;
+        ResultSet rs2 = db.executeQuery("Select * from installments where receipt_no="+rno);
+        
+        String idn,fname = null,lname = null,rno = null,date = null,fees=null,b1=null,b2=null,b3=null;
         try {
             while(rs1.next())
             {
@@ -781,14 +872,18 @@ public class newView extends javax.swing.JFrame {
             {
                 rno=rs2.getString("receipt_no");
                 date=rs2.getString("Date");
+                b1=rs2.getString("bank");
+                b2=rs2.getString("branch");
+                b3=rs2.getString("bank");
             }
-            fees=jTextField9.getText();
+            int f=Integer.parseInt(jTextField9.getText());
+            fees=EnglishNumberToWords.convert(f);
            PrintingForm re=new PrintingForm();
            re.setVisible(true);
-           re.rec(id,fname,lname,rno,date,fees);
+           re.rec(id,fname,lname,rno,date,fees,b1,b2,b3);
            re.setVisible(true);
         }catch(Exception e){}
-        
+        */
          
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -797,39 +892,49 @@ public class newView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         String rno=jTextField11.getText();
-         String id=jTextField3.getText();
+        String rno=jTextField11.getText();
+        System.out.println(rno);
+        String id=jTextField3.getText();
          
         Db db=Db.getDb();
         System.out.println("ID :"+id);       
-        ResultSet rs2 = db.executeQuery("Select * from receipt where receipt_no="+rno);
         ResultSet rs1 = db.executeQuery("Select * from student where id="+id);
-        ResultSet rs3 = db.executeQuery("Select * from installments where id="+id);
-           
-        String idn=null,fname = null,lname = null,date = null,fees=null;
+        ResultSet rs = db.executeQuery("Select * from installments where receipt_no="+rno);
+        ResultSet rs2 = db.executeQuery("Select * from cdetail where r_no="+rno);
+          
+        String idn=null,fname = null,lname = null,date = null,fees=null,b1=null,b2=null,b3=null;
         try 
         {
-          while(rs2.next())
-            {
-                date=rs2.getString("Date");
-            }
-              
             while(rs1.next())
             {
                 fname=rs1.getString("firstname");
                 lname=rs1.getString("lastname");
             }
             
+          while(rs.next())
+          {
+              rno=rs.getString("receipt_no");
+              date=rs.getString("date");
+              fees=rs.getString("feespaid");
+              
+          }
+          while(rs2.next())
+          {
+              b1=rs2.getString("bank");
+              b2=rs2.getString("branch");
+              b3=rs2.getString("cheque");
+              
+          }
             
-            while(rs3.next())
-            {
-                fees=rs3.getString("feespaid");
-            }
+            int f1=Integer.parseInt(fees);
+            String f=EnglishNumberToWords.convert(f1);
            PrintingForm re=new PrintingForm();
            re.setVisible(true);
-           re.rec(id,fname,lname,rno,date,fees);
+           re.rec(id,fname,lname,rno,date,fees,b1,b2,b3);
            re.setVisible(true);
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
@@ -880,6 +985,9 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -902,6 +1010,9 @@ public class newView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
