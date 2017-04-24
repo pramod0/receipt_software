@@ -740,8 +740,8 @@
         <Container class="javax.swing.JPanel" name="jPanel7">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Loss Receipt">
-                <Property name="tabTitle" type="java.lang.String" value="Loss Receipt"/>
+              <JTabbedPaneConstraints tabName="Find Receipt">
+                <Property name="tabTitle" type="java.lang.String" value="Find Receipt"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

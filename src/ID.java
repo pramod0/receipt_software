@@ -16,7 +16,7 @@ public class ID {
             //public static int nine=1,ten=1,eight=1,c11=1,c12=1,c13=1,c14=1,c15=1,s11=1,s12=1,JEE=1,CET=1,
             public static int rno=1;
             public static int id=0;
-            public static String rno2=null;
+            public static String rno2=null,st;
      public static int generateID(int a,int c)
         {
              Db db=Db.getDb();
@@ -29,8 +29,8 @@ public class ID {
                         sb.append(101);
                         sb.append(eight);
                         id=Integer.parseInt(sb.toString());
-                         db.executeUpdate("update scount set count='"+eight+"' where standard='"+a+"'");
-                         break;
+                        db.executeUpdate("update scount set count='"+eight+"' where standard='"+a+"'");
+                        break;
                         
                 case 2: int nine=c+1;
                         //id=year+a+nine;
@@ -151,6 +151,40 @@ public class ID {
          db.executeUpdate("update scount set count='"+rno+"' where standard='"+reci+"'");
                         
          return rno2;
+     }
+     public static String Std(int index){
+         switch(index)
+         {
+             case 1:st="VIII";
+                    break;
+             case 2:st="IX";
+                    break;
+             case 3:st="X";
+                    break; 
+             case 4:st="XI Comm";
+                    break; 
+             case 5:st="XII Comm";
+                    break; 
+             case 6:st="F.Y.Bcom";
+                    break; 
+             case 7:st="S.Y.Bcom";
+                    break; 
+             case 8:st="T.Y.Bcom";
+                    break;
+             case 9:st="XI Sci";
+                    break;
+                    
+             case 10:st="XII Sci";
+                    break;
+                    
+             case 11:st="JEE";
+                    break;
+                    
+             case 12:st="CET";
+                    break;
+         }
+         
+         return st;
      }
        
 }

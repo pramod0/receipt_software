@@ -18,6 +18,8 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.sql.Statement;
+import java.util.Calendar;
+import javax.swing.JFrame;
 import org.apache.log4j.BasicConfigurator;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -601,7 +603,7 @@ public class newView extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Loss Receipt", jPanel7);
+        jTabbedPane1.addTab("Find Receipt", jPanel7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -625,6 +627,7 @@ public class newView extends javax.swing.JFrame {
         int c = 0;
         int index=jComboBox2.getSelectedIndex();
         //int course=(int) jComboBox2.getSelectedItem();
+        
         ResultSet rs=db.executeQuery("select count from scount where standard="+index);
         
         try {
@@ -637,9 +640,13 @@ public class newView extends javax.swing.JFrame {
             Logger.getLogger(newView.class.getName()).log(Level.SEVERE, null, ex);
         }
         int gid=ID.generateID(index,c);
-        
+        String std=ID.Std(index);
+        int year2 = Calendar.getInstance().get(Calendar.YEAR);
+        int year1=year2+1;
+        String year=year2+"-"+year1;
+        System.out.println(year);
         //jLabel15.setText("gid");
-        String cmd = "insert into student(id,firstname,lastname) values (\""+gid+"\", \""+jTextField1.getText()+"\", \""+jTextField2.getText()+"\");";
+        String cmd = "insert into student(id,Std,ayear,firstname,lastname) values (\""+gid+"\",\""+std+"\",\""+year+"\", \""+jTextField1.getText()+"\", \""+jTextField2.getText()+"\");";
         if(db == null) System.out.print("i dont know why");
         else
         db.executeUpdate(cmd);
@@ -675,7 +682,7 @@ public class newView extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        jPanel6.setVisible(true);
+        //jPanel6.setVisible(true);
         Db db=Db.getDb();
         
         int fpaid=Integer.parseInt(jTextField9.getText());
@@ -725,7 +732,7 @@ public class newView extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null,"Cash Payment");
                         }
                         else{
-                            String cmd="insert into cdetail(id,bank,branch,cheque,r_no) values (\""+id+"\", \""+bname+"\",\""+branch+"\",\""+cno+"\",\""+rno+"\");";
+                            String cmd="insert into cdetail(id,bank,branch,cheque,r_no,date) values (\""+id+"\", \""+bname+"\",\""+branch+"\",\""+cno+"\",\""+rno+"\",\""+localDate+"\");";
                             db.executeUpdate(cmd);
                         }
                             
@@ -739,17 +746,19 @@ public class newView extends javax.swing.JFrame {
        /************* GERERATE RECEIPT**************/
         
         ResultSet rs3 = db.executeQuery("Select * from student where id="+id);
-        ResultSet rs2 = db.executeQuery("Select * from installments where receipt_no="+rno);
-        ResultSet rs4 = db.executeQuery("Select * from cdetail where r_no="+rno);
+        ResultSet rs2 = db.executeQuery("Select * from installments where receipt_no=\""+rno+"\"");
+        ResultSet rs4 = db.executeQuery("Select * from cdetail where r_no=\""+rno+"\"");
         
         
-        String idn1,fname1 = null,lname1 = null,rno1= null,date1= localDate.toString(),fees1=null,b11=null,b21=null,b31=null;
+        String idn1,fname1 = null,lname1 = null,std=null,ayear=null,rno1= null,date1= localDate.toString(),fees1=null,b11=null,b21=null,b31=null,cd=null;
         try {
             while(rs3.next())
             {
                 idn1=rs3.getString("id");
                 fname1=rs3.getString("firstname");
                 lname1=rs3.getString("lastname");
+                std=rs3.getString("Std");
+                ayear=rs3.getString("ayear");
             }
             while(rs2.next())
             {
@@ -758,15 +767,17 @@ public class newView extends javax.swing.JFrame {
             }
             while(rs4.next())
             {
-                b11=rs2.getString("bank");
-                b21=rs2.getString("branch");
-                b31=rs2.getString("bank");
+                b11=rs4.getString("bank");
+                b21=rs4.getString("branch");
+                b31=rs4.getString("bank");
+                cd=rs4.getString("date");
+                
             }
             int f=Integer.parseInt(jTextField9.getText());
             fees1=EnglishNumberToWords.convert(f);
            PrintingForm re=new PrintingForm();
            re.setVisible(true);
-           re.rec(id,fname1,lname1,rno,date1,fees1,bname,branch,cno);
+           re.rec(id,fname1,lname1,rno,date1,fees1,bname,branch,cno,std,ayear,jTextField9.getText(),cd);
            
         }catch(Exception e){}
         
@@ -893,29 +904,33 @@ public class newView extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         String rno=jTextField11.getText();
-        System.out.println(rno);
+//        System.out.println(rno);
         String id=jTextField3.getText();
          
         Db db=Db.getDb();
-        System.out.println("ID :"+id);       
+//        System.out.println("ID :"+id);       
         ResultSet rs1 = db.executeQuery("Select * from student where id="+id);
-        ResultSet rs = db.executeQuery("Select * from installments where receipt_no="+rno);
-        ResultSet rs2 = db.executeQuery("Select * from cdetail where r_no="+rno);
+        String checkQuery = "Select * from cdetail where r_no=\""+rno+"\"";
+        ResultSet rs2 = db.executeQuery(checkQuery);
+        String installmentsQuery = "Select * from installments where receipt_no=\""+rno+"\"";     
+        ResultSet rs3 = db.executeQuery(installmentsQuery);
           
-        String idn=null,fname = null,lname = null,date = null,fees=null,b1=null,b2=null,b3=null;
+        String idn=null,fname = null,std=null,ayear=null,lname = null,date = null,fees=null,b1=null,b2=null,b3=null,cd=null;
         try 
         {
             while(rs1.next())
             {
                 fname=rs1.getString("firstname");
                 lname=rs1.getString("lastname");
+                std=rs1.getString("Std");
+                ayear=rs1.getString("ayear");
             }
             
-          while(rs.next())
+          while(rs3.next())
           {
-              rno=rs.getString("receipt_no");
-              date=rs.getString("date");
-              fees=rs.getString("feespaid");
+              //rno=rs3.getString("receipt_no");
+              date=rs3.getString("date");
+              fees=rs3.getString("feespaid");
               
           }
           while(rs2.next())
@@ -923,14 +938,16 @@ public class newView extends javax.swing.JFrame {
               b1=rs2.getString("bank");
               b2=rs2.getString("branch");
               b3=rs2.getString("cheque");
-              
+              cd=rs2.getString("date");
           }
             
             int f1=Integer.parseInt(fees);
             String f=EnglishNumberToWords.convert(f1);
            PrintingForm re=new PrintingForm();
            re.setVisible(true);
-           re.rec(id,fname,lname,rno,date,fees,b1,b2,b3);
+           setDefaultCloseOperation(newView.DISPOSE_ON_CLOSE);
+   
+           re.rec(id,fname,lname,rno,date,f,b1,b2,b3,std,ayear,fees,cd);
            re.setVisible(true);
         }catch(Exception e){
             e.printStackTrace();
@@ -963,6 +980,7 @@ public class newView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new newView().setVisible(true);
+                
             }
         });
     }
